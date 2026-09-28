@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===========================================================================
+   Base layer — shadcn/ui semantic tokens + document defaults
+   ======================================================================== */
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 214 55% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 214 55% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 214 55% 13%;
+
+    /* Primary is the VFO brand blue (#2F6BFF) expressed in HSL. */
+    --primary: 222 100% 59%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 213 44% 97%;
+    --secondary-foreground: 214 55% 13%;
+
+    --accent: 213 44% 97%;
+    --accent-foreground: 214 55% 13%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 213 39% 92%;
+    --input: 213 39% 92%;
+    --ring: 222 100% 59%;
+
+    --radius: 0.75rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    /* Keeps anchored sections clear of the sticky header. */
+    scroll-padding-top: 92px;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-background font-sans text-ink antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    @apply bg-brand/20 text-navy;
+  }
+
+  /* Visible, on-brand focus ring for keyboard users. */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand ring-offset-2 ring-offset-background;
+  }
+}
+
+/* ===========================================================================
+   Component layer — the reusable surfaces the sections compose
+   ======================================================================== */
+@layer components {
+  /* The horizontal rhythm the body sections share. */
+  .shell {
+    @apply mx-auto w-full max-w-shell px-6 md:px-8;
+  }
+
+  /* Full-bleed rhythm for the header and hero: content runs out to the left and
+     right edges of the screen instead of being boxed into the centre column. */
+  .shell-wide {
+    @apply mx-auto w-full max-w-[1760px] px-6 md:px-10 lg:px-16;
+  }
+
+  /* Hero / dark-section mesh gradients. These were inline style objects in the
+     original single-file version; as classes they stay out of the JSX. */
+  .bg-hero-mesh {
+    background:
+      radial-gradient(60% 55% at 12% 18%, rgba(47, 107, 255, 0.42), transparent 60%),
+      radial-gradient(50% 50% at 88% 30%, rgba(56, 198, 217, 0.26), transparent 62%),
+      radial-gradient(70% 60% at 70% 100%, rgba(21, 55, 97, 0.7), transparent 70%),
+      linear-gradient(160deg, #081a33 0%, #0c2547 55%, #0e2a52 100%);
+  }
+
+  .bg-section-mesh {
+    background:
+      radial-gradient(50% 50% at 80% 0%, rgba(47, 107, 255, 0.28), transparent 60%),
+      radial-gradient(45% 45% at 10% 100%, rgba(56, 198, 217, 0.18), transparent 60%);
+  }
+
+  .bg-stats-scrim {
+    background:
+      radial-gradient(60% 60% at 50% 0%, rgba(47, 107, 255, 0.25), transparent 60%),
+      linear-gradient(180deg, rgba(8, 26, 51, 0.75), rgba(8, 26, 51, 0.92));
+  }
+
+  .bg-cta-mesh {
+    background:
+      radial-gradient(60% 90% at 15% 10%, rgba(47, 107, 255, 0.55), transparent 60%),
+      radial-gradient(60% 90% at 90% 90%, rgba(56, 198, 217, 0.4), transparent 60%),
+      linear-gradient(150deg, #0e2647, #081a33);
+  }
+
+  .bg-pricing-feature {
+    background: linear-gradient(160deg, #0e2647, #081a33);
+  }
+
+  /* Gradient text used by the hero headline and stat counters. */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+  }
+
+  /* Sticky header: transparent over the hero, frosted once scrolled. */
+  .site-nav {
+    @apply border-b border-transparent transition-colors duration-300;
+  }
+
+  .site-nav[data-scrolled="true"] {
+    @apply border-white/10 bg-navy/90 backdrop-blur-xl;
+  }
+
+  /* Scroll reveal. Driven by a CSS transition and toggled by a single shared
+     IntersectionObserver (see src/lib/reveal.js) — cheaper and more robust
+     than animating each element with JS. */
+  .reveal {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+    will-change: opacity, transform;
+  }
+
+  .reveal[data-revealed="true"] {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Hero property cards: the row is masked at both ends, and the card GSAP
+     has brought to the centre (`.is-active`) stands at full size while the
+     rest fall back. The scale lives on the inner card because GSAP owns the
+     <li> transform. */
+  .hero-cards {
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+    mask-image: linear-gradient(90deg, transparent 0, #000 10%, #000 90%, transparent 100%);
+  }
+
+  .hero-card {
+    transform: scale(0.86);
+    opacity: 0.55;
+    transition:
+      transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .is-active .hero-card {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  /* A slow drift across the card imagery, so the active card is never wholly
+     still between steps. */
+  .deck-media {
+    animation: propflow-drift 20s ease-in-out infinite alternate;
+  }
+
+  /* Logo marquee. */
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  }
+
+  .marquee-track {
+    animation: propflow-marquee 32s linear infinite;
+    will-change: transform;
+  }
+}
+
+@keyframes propflow-drift {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+
+@keyframes propflow-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+/* ===========================================================================
+   Reduced motion — everything resolves to its final, static state
+   ======================================================================== */
+/* Behind an open header menu: the page dims and softens so the panel reads
+   as the only thing in focus. */
+.nav-backdrop {
+  background: rgba(8, 26, 51, 0.35);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  animation: propflow-fade-in 220ms ease-out both;
+}
+
+@keyframes propflow-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Caption under the device showcase: re-keyed on every scene, so it fades up. */
+.fade-swap {
+  animation: propflow-fade-up 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes propflow-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .marquee-track,
+  .deck-media,
+  .fade-swap,
+  .nav-backdrop {
+    animation: none !important;
+    transform: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
