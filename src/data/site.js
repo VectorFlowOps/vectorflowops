@@ -27,7 +27,7 @@ export const navigation = [
 
 /**
  * What the product does. Each capability deep-links to its block in the
- * "One software. All the features." section and lists that block's proof
+ * "One platform. Every feature." section and lists that block's proof
  * points; the portals column and the promo card round out the panel.
  */
 export const platformMenu = {
@@ -35,13 +35,13 @@ export const platformMenu = {
     title: "Capabilities",
     items: [
       {
-        label: "Automate rent collection",
+        label: "Billing and revenue recovery",
         Icon: CreditCard,
         href: "/#rent-collection",
         points: [
-          "Credit, debit, ACH, cash and check",
-          "Automated payment reminders",
-          "Track paid and overdue rent",
+          "Card, ACH, cash and check via Stripe",
+          "AI follow-up on unpaid balances",
+          "Aging reports and late fees",
         ],
       },
       {
@@ -49,39 +49,39 @@ export const platformMenu = {
         Icon: Landmark,
         href: "/#accounting",
         points: [
-          "Real-time reporting",
-          "Customizable chart of accounts",
+          "Live executive BI dashboard",
+          "Revenue, payment and aging reports",
           "Any bank, synced with QuickBooks",
         ],
       },
       {
-        label: "Maintenance requests and vendors",
+        label: "Maintenance and projects",
         Icon: Wrench,
         href: "/#maintenance",
         points: [
           "Requests online, with photos",
-          "Work orders and 1099 forms",
-          "Vendors paid by check or wire",
+          "Task boards built on lease signing",
+          "Vendors paid automatically",
         ],
       },
       {
-        label: "Marketing and a custom website",
+        label: "CRM, leasing and e-sign",
         Icon: Megaphone,
         href: "/#marketing",
         points: [
-          "Zillow, Trulia, HotPads and more",
-          "Criminal, eviction, employment and credit checks",
-          "A rental website on your domain",
+          "Every lead tracked to move-in",
+          "AI-drafted leases, DocuSign sync",
+          "Zillow, Trulia, HotPads and screening",
         ],
       },
       {
-        label: "AI assistant",
+        label: "AI operations",
         Icon: Sparkles,
         href: "/#ai-assistant",
         points: [
-          "Resolves tenant issues instantly",
-          "Automates daily tasks",
-          "Instant insights and reports",
+          "Voice and text agent, 24/7",
+          "Automation across every module",
+          "Every action audit-logged",
         ],
       },
     ],
@@ -109,8 +109,8 @@ export const platformMenu = {
   },
   promo: {
     eyebrow: "New",
-    title: "Work smarter with the AI assistant",
-    body: "Answers tenants before they reach you, does the daily busywork and turns a question into a report.",
+    title: "Meet your 24/7 AI voice agent",
+    body: "Answers every call and text, captures the lead and logs it in your CRM, even at 2 a.m.",
     cta: { label: "See it in action", href: "/#ai-assistant" },
   },
   footer: [

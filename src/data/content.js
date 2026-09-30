@@ -16,6 +16,8 @@ import {
   Laptop,
   LayoutDashboard,
   MessageCircle,
+  PhoneCall,
+  ShieldCheck,
   Smartphone,
   Sparkles,
   Tablet,
@@ -25,7 +27,6 @@ import {
   Building2,
   CreditCard,
   Droplets,
-  FolderLock,
   Landmark,
   Palmtree,
   Sailboat,
@@ -41,9 +42,9 @@ import { images } from "./images";
 /* --------------------------------------------------------------- hero ---- */
 
 export const hero = {
-  announcement: "AI now drafts your owner statements automatically",
+  announcement: "New: an AI agent that answers your calls and texts 24/7",
   headline: "One platform for properties, payments and people.",
-  body: "Automate rent collection, route maintenance to the right vendor and keep every tenant informed — from one calm, organized place.",
+  body: "CRM, leases, rent, maintenance and reporting in one place, with AI that answers calls, chases late payments and handles the busywork around the clock.",
   primaryCta: { label: "Start free trial", href: "/get-started" },
   secondaryCta: { label: "Watch demo", href: "#" },
   /** Static counterweight to the moving deck. Stays put once it has faded in. */
@@ -72,7 +73,7 @@ export const hero = {
 /* ------------------------------------------------------------- brands ---- */
 
 export const marquee = {
-  caption: "Trusted by property teams managing coastal portfolios nationwide",
+  caption: "Trusted by property teams running coastal portfolios nationwide",
   brands: [
     { name: "Harbor Row", Icon: Building2 },
     { name: "Seaview", Icon: Anchor },
@@ -88,29 +89,29 @@ export const marquee = {
 
 export const features = {
   eyebrow: "Why VFO",
-  title: "Built for modern property management.",
+  title: "The operating system for modern property management.",
   subtitle:
-    "Streamline operations, cut manual work and give owners, tenants and vendors a better experience.",
+    "Every lead, lease, payment and work order in one connected platform, with AI running the busywork in the background.",
   items: [
     {
-      Icon: CreditCard,
-      title: "Secure rent payments",
-      body: "Flexible, recurring payments by card or bank transfer, with reminders before anything is late.",
-    },
-    {
-      Icon: FolderLock,
-      title: "Organized operations",
-      body: "Leases, documents and communications filed against each unit and searchable in seconds.",
-    },
-    {
       Icon: UsersRound,
-      title: "Better collaboration",
-      body: "Landlords, tenants and vendors see the same work order until it's closed. Nothing lost in between.",
+      title: "One CRM for everything",
+      body: "Leads, tenants, owners and vendors in one place, linked to every property, lease and document.",
     },
     {
-      Icon: BarChart3,
-      title: "Real insights",
-      body: "Occupancy, cash flow and owner statements, in plain language with the numbers behind them.",
+      Icon: PhoneCall,
+      title: "An AI agent that never misses a call",
+      body: "Answers calls and texts 24/7, captures every inquiry and logs it straight into your CRM.",
+    },
+    {
+      Icon: CreditCard,
+      title: "Payments that chase themselves",
+      body: "Card and bank payments through Stripe, with automatic reminders on every unpaid balance.",
+    },
+    {
+      Icon: ShieldCheck,
+      title: "Live numbers, full audit trail",
+      body: "Revenue, cash flow and response times update in real time, and every action is logged.",
     },
   ],
 };
@@ -231,9 +232,9 @@ export const productPreview = {
         on: true,
       },
       {
-        name: "Late fee",
-        trigger: "a balance is five days overdue",
-        action: "apply the fee in the lease",
+        name: "Move-in board",
+        trigger: "a lease is e-signed",
+        action: "build the move-in task board",
         runs: "6 runs",
         on: true,
       },
@@ -253,7 +254,7 @@ export const productPreview = {
       },
       {
         name: "Lease renewal",
-        trigger: "a lease is inside sixty days",
+        trigger: "a lease has sixty days left",
         action: "draft renewal, notify owner",
         runs: "Paused",
         on: false,
@@ -265,7 +266,7 @@ export const productPreview = {
         { rule: "Rent reminder", detail: "Texted 14 tenants ahead of the 1st", when: "8:00" },
         { rule: "Vendor routing", detail: "Sent Unit 4B to Coastal Plumbing", when: "Yesterday" },
         { rule: "Owner payout", detail: "Split $31,200 across 6 owners", when: "Mon" },
-        { rule: "Late fee", detail: "Applied to 2 balances", when: "Mon" },
+        { rule: "Move-in board", detail: "Built 2 boards from signed leases", when: "Mon" },
       ],
     },
   },
@@ -283,8 +284,8 @@ export const productPreview = {
         progress: 80,
       },
       {
-        name: "Rent chaser",
-        role: "Follows up on late balances, in your tone",
+        name: "Revenue recovery",
+        role: "Follows up on unpaid balances, in your tone",
         status: "Active",
         tone: "good",
         tasks: "9 tasks today",
@@ -299,8 +300,8 @@ export const productPreview = {
         progress: 92,
       },
       {
-        name: "Lease reader",
-        role: "Answers questions straight from the lease text",
+        name: "Voice agent",
+        role: "Answers calls and texts, logs every lead",
         status: "Learning",
         tone: "info",
         tasks: "3 tasks today",
@@ -312,8 +313,8 @@ export const productPreview = {
       items: [
         { agent: "Statement writer", detail: "Drafted September owner statements", when: "2m" },
         { agent: "Maintenance triage", detail: "Routed Unit 4B to Coastal Plumbing", when: "18m" },
-        { agent: "Rent chaser", detail: "Followed up on three late balances", when: "1h" },
-        { agent: "Lease reader", detail: "Answered a pet-policy question for 12A", when: "3h" },
+        { agent: "Revenue recovery", detail: "Followed up on three late balances", when: "1h" },
+        { agent: "Voice agent", detail: "Booked a viewing from a missed call", when: "3h" },
         { agent: "Statement writer", detail: "Flagged a duplicate invoice for review", when: "5h" },
       ],
     },
@@ -407,27 +408,27 @@ export const productPreview = {
 
 export const howItWorks = {
   eyebrow: "Getting set up",
-  title: "From spreadsheet to running in an afternoon.",
+  title: "From spreadsheet to fully running in an afternoon.",
   subtitle:
-    "Three steps to move your whole portfolio onto VFO, no data-migration project required.",
+    "Three steps to move your whole portfolio onto VFO. No migration project, no consultants.",
   steps: [
     {
       Icon: Upload,
       tag: "Import",
       title: "Bring your properties",
-      body: "Upload a spreadsheet of units, leases and balances. VFO maps the columns and builds your portfolio for you.",
+      body: "Upload a spreadsheet of units, leases and balances. VFO maps the columns and builds your portfolio and CRM for you.",
     },
     {
       Icon: UserPlus,
       tag: "Invite",
       title: "Add tenants and vendors",
-      body: "Send a link and everyone gets the right portal automatically. No training, no logins to manage by hand.",
+      body: "Send one link and everyone lands in the right portal with the right permissions. No training required.",
     },
     {
       Icon: Zap,
       tag: "Run",
       title: "Collect, coordinate, report",
-      body: "Rent flows in on autopay, requests route to the right vendor, and owner statements go out on the first.",
+      body: "Rent arrives on autopay, requests reach the right vendor, and owner statements go out on the 1st.",
     },
   ],
 };
@@ -438,17 +439,17 @@ export const portals = {
   eyebrow: "Three portals",
   title: "Tailored experiences for every user.",
   subtitle:
-    "Property management companies, landlords and tenants each get a portal built around what they need to do, so everyone gets things done faster.",
+    "Property managers, landlords and tenants each get a portal built around their day, all running on the same core platform.",
   items: [
     {
       label: "Property managers",
       href: "/property-managers",
       image: images.statsStrip,
       title: "Management Workspace",
-      body: "Every owner, door and tenant under your company, with branded portals for each.",
+      body: "Every owner, door, tenant and lead under your company, run from one command centre.",
       points: [
         "Trust accounting and owner statements",
-        "Team roles, tasks and approvals",
+        "Team directory, roles and approvals",
         "Branded owner and tenant portals",
       ],
     },
@@ -457,7 +458,7 @@ export const portals = {
       href: "/landlords",
       image: images.portalLandlord,
       title: "Landlord Portal",
-      body: "Manage your own units end to end, or see exactly what your manager is doing with them.",
+      body: "Run your own units end to end, or see exactly what your manager is doing with them.",
       points: [
         "Income and expenses by property",
         "Lease renewals and vacancies",
@@ -469,7 +470,7 @@ export const portals = {
       href: "/tenants",
       image: images.portalTenant,
       title: "Tenant Portal",
-      body: "A simple home for rent, requests and the lease, on any device.",
+      body: "One simple home for rent, requests and the lease, on any device.",
       points: [
         "Pay rent and set up autopay",
         "Submit and track maintenance requests",
@@ -484,76 +485,123 @@ export const portals = {
 export const deepDives = {
   id: "all-features",
   eyebrow: "Everything included",
-  title: "One software. All the features.",
-  subtitle: "We believe property management software should make your life easier, not harder.",
+  title: "One platform. Every feature.",
+  subtitle:
+    "Fourteen core modules working as one system, so nothing gets re-typed, lost or forgotten.",
   cta: { label: "See it in action", href: "/get-started" },
   items: [
     {
       id: "rent-collection",
-      eyebrow: "Rent collection",
-      title: "Automate rent collection.",
-      body: "Tired of chasing rent and late fees? Tenants pay you automatically on the 1st of each month. Make more money and spend less time collecting.",
+      eyebrow: "Billing and revenue recovery",
+      title: "Get paid on time, every time.",
+      body: "Stop chasing rent. Tenants pay by card or bank on autopay, and VFO follows up on every unpaid balance for you, politely and persistently.",
       image: images.payments,
       flip: false,
       points: [
-        { lead: "Collect rent", rest: "by credit card, debit card, ACH, cash and check." },
-        { lead: "Send automated reminders", rest: "before the due date and after it." },
-        { lead: "Track paid and overdue rent", rest: "with late fees applied by your rules." },
+        { lead: "Collect rent through Stripe", rest: "by card, ACH, cash or check." },
+        { lead: "Recover unpaid balances", rest: "with AI reminders before and after the due date." },
+        { lead: "Track every balance", rest: "with aging reports and late fees applied by your rules." },
       ],
     },
     {
       id: "accounting",
-      eyebrow: "Accounting",
+      eyebrow: "Accounting and reporting",
       title: "Accounting for non-accountants.",
-      body: "Run custom reports, track all of your cash flow and make data-driven decisions with accounting that is as robust as it is easy to use.",
+      body: "See revenue, cash flow and team performance live, then pull any report in a click. Robust enough for your accountant, simple enough for you.",
       image: images.cta,
       flip: true,
       points: [
-        { lead: "Real-time reporting", rest: "by property, owner or portfolio." },
         {
-          lead: "Customizable chart of accounts",
-          rest: "that matches how you already keep books.",
+          lead: "Executive BI dashboard",
+          rest: "with live revenue, cash flow and team response times.",
+        },
+        {
+          lead: "A full reports suite",
+          rest: "for revenue, payments, call logs, aging and exports.",
         },
         { lead: "Connect any bank", rest: "and sync with QuickBooks." },
       ],
     },
     {
       id: "maintenance",
-      eyebrow: "Maintenance",
-      title: "Handle maintenance requests and vendors.",
-      body: "Keep residents and vendors happy and make sure nothing falls through the cracks, with an online portal for everyone involved.",
+      eyebrow: "Maintenance and projects",
+      title: "Maintenance that runs itself.",
+      body: "Requests, vendors and move-ins in one flow. The moment a lease is signed, VFO builds the task board, so nothing falls through the cracks.",
       image: images.maintenance,
       flip: false,
       points: [
-        { lead: "Get maintenance requests online", rest: "with photos and urgency." },
-        { lead: "Assign and track work orders", rest: "and issue 1099 forms at year end." },
-        { lead: "Pay vendors automatically", rest: "by mailed check or wire." },
+        { lead: "Take requests online", rest: "with photos and urgency." },
+        {
+          lead: "Build task boards automatically",
+          rest: "the moment a lease or agreement is signed.",
+        },
+        { lead: "Pay vendors automatically", rest: "and issue 1099 forms at year end." },
       ],
     },
     {
       id: "marketing",
-      eyebrow: "Marketing and leasing",
-      title: "Market your listings online and get a custom website.",
-      body: "Find new tenants or owners faster, fill vacancies in record time, screen applicants, collect applications from your own website and e-sign leases online.",
+      eyebrow: "CRM, leasing and e-sign",
+      title: "From first inquiry to signed lease.",
+      body: "Every lead is captured, tracked and followed up. When the right applicant is ready, AI drafts the lease and it goes out for e-signature in minutes.",
       image: images.portalLandlord,
       flip: true,
       points: [
-        { lead: "Market your properties", rest: "on Zillow, Trulia, HotPads and more." },
-        { lead: "Run background checks", rest: "for criminal, eviction, employment and credit." },
-        { lead: "Build a custom website", rest: "for your rentals, on your domain." },
+        {
+          lead: "Track every lead in the CRM",
+          rest: "from first inquiry to move-in day.",
+        },
+        {
+          lead: "AI-drafted leases and agreements",
+          rest: "signed online and synced with DocuSign.",
+        },
+        {
+          lead: "List on Zillow, Trulia and HotPads",
+          rest: "with full applicant screening.",
+        },
       ],
     },
     {
       id: "ai-assistant",
-      eyebrow: "AI assistant",
-      title: "Work smarter with the VFO AI assistant.",
-      body: "Cut through the busywork, complete tasks automatically and get answers in seconds, so you work faster and focus on what actually grows your business.",
+      eyebrow: "AI operations",
+      title: "AI that works while you sleep.",
+      body: "VFO's AI answers the phone, handles the busywork and connects every module in the background, and every action it takes is logged.",
       image: images.heroInterior,
       flip: false,
       points: [
-        { lead: "Resolve tenant issues instantly", rest: "before they ever reach you." },
-        { lead: "Automate daily tasks", rest: "to get more done with the same team." },
-        { lead: "See instant insights and reports", rest: "for smarter decisions." },
+        {
+          lead: "Voice and text agent",
+          rest: "answers calls 24/7 and captures every inquiry.",
+        },
+        {
+          lead: "A central automation engine",
+          rest: "triggers the next step across every module.",
+        },
+        {
+          lead: "An unchangeable audit log",
+          rest: "of every action, human or AI.",
+        },
+      ],
+    },
+    {
+      id: "communications",
+      eyebrow: "Communications and team",
+      title: "Keep everyone in the loop.",
+      body: "Message your team, reach every tenant and keep calendars in sync, with the right people seeing the right things.",
+      image: images.portalTenant,
+      flip: true,
+      points: [
+        {
+          lead: "Team messaging and calendars",
+          rest: "with two-way sync.",
+        },
+        {
+          lead: "Broadcasts and scheduled notices",
+          rest: "by email and SMS, with full logs.",
+        },
+        {
+          lead: "A staff directory",
+          rest: "with role-based access controls.",
+        },
       ],
     },
   ],
@@ -562,13 +610,13 @@ export const deepDives = {
 /* -------------------------------------------------------------- stats ---- */
 
 export const stats = {
-  title: "Numbers our customers see.",
+  title: "Results our customers see.",
   subtitle: "Averages across portfolios that have run on VFO for at least six months.",
   image: images.statsStrip,
   items: [
     { value: 98.6, suffix: "%", label: "rent collected on time" },
-    { value: 2.1, suffix: " days", label: "average work order close" },
-    { value: 11, suffix: " hrs", label: "saved per week, per manager" },
+    { value: 2.1, suffix: " days", label: "average time to close a work order" },
+    { value: 11, suffix: " hrs", label: "saved per manager, every week" },
     { value: 4.9, suffix: "/5", label: "tenant satisfaction" },
   ],
 };
@@ -584,14 +632,14 @@ export const testimonials = {
       name: "Dana Mercer",
       role: "Ops Director, Harbor Row",
       quote:
-        "We manage 340 beachfront units with a team of four. VFO is the reason that number isn't eight. Rent just shows up now.",
+        "We run 340 beachfront units with a team of four. Without VFO, we'd need eight. Rent just shows up now.",
     },
     {
       initials: "RP",
       name: "Ravi Patel",
       role: "Principal, Tideline Group",
       quote:
-        "Owners used to call for statements. Now they open the portal and see everything. My inbox is a third of what it was.",
+        "Owners used to call for their statements. Now they open the portal and see everything. My inbox is a third of what it was.",
     },
     {
       initials: "SL",
@@ -609,7 +657,7 @@ export const pricing = {
   eyebrow: "Pricing",
   title: "One price per plan. Every feature included.",
   subtitle:
-    "All three portals, unlimited users, every integration and the AI assistant, on every plan. Just pick the size that fits your portfolio.",
+    "All three portals, all fourteen core modules, unlimited users and every integration, on every plan. Just pick the size that fits your portfolio.",
   /** Annual billing is 20% off the monthly price; the component does the maths. */
   billing: {
     monthly: { id: "monthly", label: "Monthly", note: "Billed monthly" },
@@ -627,18 +675,18 @@ export const pricing = {
       cta: { label: "Join waitlist", href: "/waitlist" },
       features: [
         "Rent collection, reminders and late fees",
-        "Listings on Zillow and 7 more sites, with screening",
+        "CRM, listings and applicant screening",
+        "AI-drafted leases with e-sign",
         "Maintenance requests and vendor payments",
         "Bookkeeping, bank sync and tax-ready reports",
         "Tenant app and landlord portal",
-        "AI assistant and automations",
-        "Email support",
+        "AI voice agent, 24/7",
       ],
     },
     {
       id: "professional",
       name: "Professional",
-      tagline: "For property management companies that are growing.",
+      tagline: "For growing property management companies.",
       monthly: 499.99,
       unitsLabel: "Up to 200 units",
       unitsCap: 200,
@@ -649,7 +697,7 @@ export const pricing = {
       features: [
         "Trust accounting and owner statements",
         "Owner portal and management-fee automation",
-        "Team roles, tasks and permissions",
+        "Team directory, roles and permissions",
         "AI leasing agents on every listing",
         "Custom rental website on your domain",
         "Priority chat and phone support",
@@ -665,11 +713,11 @@ export const pricing = {
       includesLabel: "Everything in Professional, plus",
       cta: { label: "Join waitlist", href: "/waitlist" },
       features: [
-        "Multi-entity and multi-office",
+        "Multiple entities and offices",
         "White-label branded portals",
         "Open API, webhooks and Zapier",
         "Assisted migration from AppFolio, Buildium or Yardi",
-        "SSO and audit logs",
+        "SSO and advanced audit logs",
         "Dedicated account manager and uptime SLA",
       ],
     },
@@ -683,19 +731,28 @@ export const pricing = {
     "No card required",
     "Unlimited users",
     "Free migration",
-    "Cancel any time",
+    "Cancel anytime",
   ],
+  /** The fourteen core modules, plus the portals they power. Four columns on desktop. */
   included: {
-    title: "Included in every plan",
+    title: "The core platform, included in every plan",
     items: [
-      "Management, landlord and tenant portals",
-      "Rent by card, ACH, cash and check",
-      "Listing syndication and screening",
-      "Maintenance and vendor portal",
-      "AI assistant and automations",
+      "Live company dashboard",
+      "CRM and lead tracking",
+      "Properties, units and leases",
+      "AI lease drafting and e-sign",
+      "AI voice and text agent",
+      "Stripe billing and revenue recovery",
+      "Automatic task boards",
+      "Team chat and calendar sync",
+      "Executive BI dashboard",
+      "AI automation engine",
+      "Staff directory and access control",
+      "Security and audit log",
+      "Full reports suite",
+      "Broadcasts, SMS and notices",
+      "Manager, landlord and tenant portals",
       "Bank sync and QuickBooks",
-      "E-sign leases and documents",
-      "Real-time reporting",
     ],
   },
 };
@@ -709,17 +766,22 @@ export const faq = {
     {
       question: "How long does it take to get started?",
       answer:
-        "Most teams import their portfolio and send their first tenant invites the same afternoon. Upload a spreadsheet of units and VFO builds everything for you, no migration project required.",
+        "Most teams import their portfolio and send their first tenant invites the same afternoon. Upload a spreadsheet of units and VFO builds everything for you. No migration project required.",
+    },
+    {
+      question: "What does the AI actually do?",
+      answer:
+        "It answers calls and texts 24/7 and logs every inquiry in your CRM. It also drafts leases and agreements, follows up on unpaid balances, sends requests to the right vendor and builds task boards when a lease is signed. You set the rules, and every action it takes is logged.",
     },
     {
       question: "Do tenants and vendors pay to use it?",
       answer:
-        "No. Your subscription covers everyone. Tenants and vendors get their portals for free, and there are no per-user charges on any plan.",
+        "No. Your subscription covers everyone. Tenants and vendors use their portals for free, and no plan charges per user.",
     },
     {
       question: "How are payments processed and how fast are payouts?",
       answer:
-        "Payments run through bank-grade, PCI-compliant processing. Card payments settle in one to two business days and ACH in two to three, with owner payouts scheduled automatically once rent clears.",
+        "Payments run through Stripe's bank-grade, PCI-compliant processing. Card payments settle in one to two business days and ACH in two to three, and owner payouts are scheduled automatically once rent clears.",
     },
     {
       question: "What counts as a unit?",
@@ -729,12 +791,12 @@ export const faq = {
     {
       question: "Can I switch plans or cancel later?",
       answer:
-        "Anytime. Upgrade, downgrade or cancel from your settings. If you cancel, you keep access through the end of your billing period and can export all your data.",
+        "Anytime. Upgrade, downgrade or cancel from your settings. If you cancel, you keep access until the end of your billing period and can export all your data.",
     },
     {
       question: "Is my data secure?",
       answer:
-        "Yes. Data is encrypted in transit and at rest, backed up daily, and hosted on SOC 2 Type II certified infrastructure. You control who on your team sees what.",
+        "Yes. Data is encrypted in transit and at rest, backed up daily and hosted on SOC 2 Type II certified infrastructure. Role-based permissions control who sees what, and an unchangeable audit log records every action, human or AI.",
     },
   ],
 };
@@ -742,8 +804,8 @@ export const faq = {
 /* ---------------------------------------------------------------- cta ---- */
 
 export const callToAction = {
-  title: "Everything you need to manage properties, in one place.",
-  body: "Simple. Secure. Built for you. Start free for 30 days, no card required.",
+  title: "Your whole operation, in one place.",
+  body: "CRM, rent, maintenance, AI and reporting, all connected. Start free for 30 days, no card required.",
   cta: { label: "Start free trial", href: "/get-started" },
   image: images.cta,
 };

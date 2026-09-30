@@ -8,7 +8,7 @@ import { deepDives } from "@/data/content";
 import { cn } from "@/lib/utils";
 
 /**
- * "One software. All the features." — the five pillars, each an alternating
+ * "One platform. Every feature." — the six pillars, each an alternating
  * text/image block with three proof points and a call to action.
  *
  * Every block carries an id so the header's Platform menu can deep-link to
